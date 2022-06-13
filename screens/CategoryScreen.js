@@ -1,5 +1,3 @@
-import React from "react";
-
 import { FlatList } from "react-native";
 
 //import data
@@ -20,6 +18,7 @@ const CategoryScreen = () => {
       data={CATEGORIES}
       keyExtractor={(item) => item.id}
       renderItem={renderCategoryItem}
+      numColumns={2}
     />
   );
 };
