@@ -6,13 +6,23 @@ import { CATEGORIES } from "../data/dummy-data";
 //import from components
 import CategoryGridTile from "./../components/CategoryGridTile";
 
-const renderCategoryItem = (itemData) => {
-  return (
-    <CategoryGridTile title={itemData.item.title} color={itemData.item.color} />
-  );
-};
+const CategoryScreen = ({ navigation }) => {
+  // function that create single piece of flatlist
+  const renderCategoryItem = (itemData) => {
+    const presHandler = () => {
+      console.log("klik");
+      navigation.navigate("MealsOverview");
+    };
 
-const CategoryScreen = () => {
+    return (
+      <CategoryGridTile
+        title={itemData.item.title}
+        color={itemData.item.color}
+        onPress={presHandler}
+      />
+    );
+  };
+
   return (
     <FlatList
       data={CATEGORIES}
