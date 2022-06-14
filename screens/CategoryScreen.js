@@ -10,8 +10,9 @@ const CategoryScreen = ({ navigation }) => {
   // function that create single piece of flatlist
   const renderCategoryItem = (itemData) => {
     const presHandler = () => {
-      console.log("klik");
-      navigation.navigate("MealsOverview");
+      navigation.navigate("MealsOverview", {
+        categoryId: itemData.item.id,
+      });
     };
 
     return (
