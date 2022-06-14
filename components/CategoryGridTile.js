@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     height: 150,
     borderRadius: 8,
     elevation: 4,
-    //
+    // ios shadow
     backgroundColor: "white",
     shadowColor: "black",
     shadowOpacity: 0.25,
