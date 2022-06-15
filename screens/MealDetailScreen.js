@@ -12,6 +12,7 @@ import MealDetails from "./../components/MealDetails";
 
 // layout from react
 import { useLayoutEffect } from "react";
+import { IconButton } from "../components/IconButton";
 
 const MealDetailScreen = ({ route, navigation }) => {
   const mealId = route.params.mealId;
@@ -25,7 +26,13 @@ const MealDetailScreen = ({ route, navigation }) => {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => {
-        return <Button title="tap me" onPress={headerButtonPressHandler} />;
+        return (
+          <IconButton
+            icon="star"
+            color="white"
+            onPress={headerButtonPressHandler}
+          />
+        );
       },
     });
   }, [navigation, headerButtonPressHandler]);
