@@ -1,4 +1,4 @@
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, ScrollView, Text, Image, StyleSheet } from "react-native";
 
 import { MEALS } from "../data/dummy-data";
 import MealDetails from "./../components/MealDetails";
@@ -8,7 +8,7 @@ const MealDetailScreen = ({ route }) => {
 
   const selectedMeal = MEALS.find((meal) => meal.id === mealId);
   return (
-    <View>
+    <ScrollView style={styles.rootContainer}>
       <Image source={{ uri: selectedMeal.imageUrl }} style={styles.image} />
       <Text style={styles.title}>{selectedMeal.title}</Text>
       <MealDetails
@@ -17,39 +17,47 @@ const MealDetailScreen = ({ route }) => {
         affordability={selectedMeal.affordability}
         textStyle={styles.detailText}
       />
-      <View style={styles.subtitleContainer}>
-        <Text style={styles.subtitle}>Ingredients</Text>
-      </View>
 
-      {selectedMeal.ingredients.map((ingredient) => {
-        return (
-          <Text key={ingredient} style={styles.smallText}>
-            {" "}
-            {ingredient}
-          </Text>
-        );
-      })}
-      <View style={styles.subtitleContainer}>
-        <Text style={styles.subtitle}> Steps</Text>
-      </View>
+      <View style={styles.listOuterContainer}>
+        <View style={styles.listContainer}>
+          <View style={styles.subtitleContainer}>
+            <Text style={styles.subtitle}>Ingredients</Text>
+          </View>
 
-      {selectedMeal.steps.map((step) => {
-        return (
-          <Text key={step} style={styles.smallText}>
-            {step}
-          </Text>
-        );
-      })}
-    </View>
+          {selectedMeal.ingredients.map((ingredient) => {
+            return (
+              <Text key={ingredient} style={styles.smallText}>
+                {" "}
+                {ingredient}
+              </Text>
+            );
+          })}
+          <View style={styles.subtitleContainer}>
+            <Text style={styles.subtitle}> Steps</Text>
+          </View>
+
+          {selectedMeal.steps.map((step) => {
+            return (
+              <Text key={step} style={styles.smallText}>
+                {step}
+              </Text>
+            );
+          })}
+        </View>
+      </View>
+    </ScrollView>
   );
 };
 
 export default MealDetailScreen;
 
 const styles = StyleSheet.create({
+  rootContainer: {
+    marginBottom: 16,
+  },
   image: {
     width: "100%",
-    height: 200,
+    height: 350,
   },
   title: {
     fontWeight: "bold",
@@ -78,5 +86,11 @@ const styles = StyleSheet.create({
     marginHorizontal: 24,
     color: "white",
     textAlign: "center",
+  },
+  listOuterContainer: {
+    alignItems: "center",
+  },
+  listContainer: {
+    width: "80%",
   },
 });
