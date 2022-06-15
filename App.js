@@ -16,6 +16,10 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import FavouriteScreen from "./screens/FavouriteScreen";
 
+//import icons
+
+import { Ionicons } from "@expo/vector-icons";
+
 const Stack = createNativeStackNavigator();
 
 const Drawer = createDrawerNavigator();
@@ -29,8 +33,26 @@ const DrawerNavigator = () => {
         sceneContainerStyle: { backgroundColor: "black" },
       }}
     >
-      <Drawer.Screen name="categories" component={CategoryScreen} />
-      <Drawer.Screen name="favorites" component={FavouriteScreen} />
+      <Drawer.Screen
+        name="categories"
+        component={CategoryScreen}
+        options={{
+          title: "All categories",
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name="list" color={color} size={size} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="favorites"
+        component={FavouriteScreen}
+        options={{
+          title: "Favourites",
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name="star" color={color} size={size} />
+          ),
+        }}
+      />
     </Drawer.Navigator>
   );
 };
