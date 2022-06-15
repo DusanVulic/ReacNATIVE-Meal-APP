@@ -4,6 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 //import screens
 import CategoryScreen from "./screens/CategoryScreen";
 import MealsOverwievScreen from "./screens/MealsOverwievScreen";
+import MealDetailScreen from "./screens/MealDetailScreen";
 
 // import of a NAVIGATION CONTAINER
 import { NavigationContainer } from "@react-navigation/native";
@@ -40,6 +41,7 @@ export default function App() {
             //   };
             // }}
           />
+          <Stack.Screen name="meal detail" component={MealDetailScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </>
