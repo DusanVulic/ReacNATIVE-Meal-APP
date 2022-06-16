@@ -11,6 +11,14 @@ const FavouriteScreen = () => {
     favoriteMealsCtx.ids.includes(meal.id)
   );
 
+  if (favoriteMeals.length === 0) {
+    return (
+      <View>
+        <Text style={styles.text}>You have no favorite meals yet</Text>
+      </View>
+    );
+  }
+
   return <MealsList items={favoriteMeals} />;
 };
 
@@ -21,5 +29,11 @@ const styles = StyleSheet.create({
     color: "white",
     textAlign: "center",
     padding: 32,
+  },
+  text: {
+    fontSize: 18,
+    color: "white",
+    textAlign: "center",
+    marginTop: 32,
   },
 });
